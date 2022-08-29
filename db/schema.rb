@@ -22,12 +22,23 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_145829) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "inventories", force: :cascade do |t|
+    t.string "name"
+    t.text "description"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_inventories_on_user_id"
+  end
+
   create_table "inventory_foods", force: :cascade do |t|
     t.string "quantity"
     t.bigint "foods_id", null: false
+    t.bigint "inventories_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["foods_id"], name: "index_inventory_foods_on_foods_id"
+    t.index ["inventories_id"], name: "index_inventory_foods_on_inventories_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,5 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_08_29_145829) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "inventories", "users"
   add_foreign_key "inventory_foods", "foods", column: "foods_id"
+  add_foreign_key "inventory_foods", "inventories", column: "inventories_id"
 end
