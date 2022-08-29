@@ -1,9 +1,15 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @recipe %>
+
+  <%= @recipe.name %>
+  <div class="recipes">
+      <h4>Preparation_time: <%= @recipe.preparation_time %></h4>
+      <%= @recipe.public %>
+  </div>
+    <h4>Cooking_time: <%= @recipe.cooking_time %></h4>
+    <% "Steps go here" %>
+
 
 <div>
   <%= link_to "Back to recipes", recipes_path %>
-
-
 </div>
