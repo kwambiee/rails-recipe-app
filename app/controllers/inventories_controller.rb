@@ -1,4 +1,6 @@
 class InventoriesController < ApplicationController
+  before_action :inventory, only: [:show, :edit, :update, :destroy]
+
   def index
     @user = User.find(params[:user_id])
     @inventories = Inventory.includes(:user).where(user: params[:user_id])
@@ -10,8 +12,8 @@ class InventoriesController < ApplicationController
   end
 
   def create # rubocop:disable Metrics/MethodLength
-    authorize! :read, inventory
     inventory = params[:inventory]
+    # authorize! :manage, inventory
     user = User.find(params[:user_id])
     inventory = Inventory.new(inventory.permit(:name, :description))
     inventory.user_id = user.id
@@ -21,7 +23,7 @@ class InventoriesController < ApplicationController
           # success message
           flash[:success] = 'inventory saved successfully'
           # redirect to index
-          redirect_to "/inventories"
+          redirect_to user_inventories_path
         else
           # error message
           flash.now[:error] = 'Error: inventory could not be saved'
@@ -32,11 +34,26 @@ class InventoriesController < ApplicationController
     end
 
     def new # rubocop:disable Lint/NestedMethodDefinition
-      authorize! :manage, inventory
+      # authorize! :manage, inventory
       inventory = Inventory.new
       respond_to do |format|
         format.html { render :new, locals: { inventory: } }
       end
     end
   end
+
+  def destroy
+    # Perform the lookup
+    @inventory_item = Inventory.find(params[:id])
+
+    # Destroy/delete the record
+    @inventory_item.destroy
+    
+
+    # Redirect
+    respond_to do |format|
+      format.html { redirect_to user_inventories_path, notice: 'Inventory was removed.' }
+    end
+  end
+
 end
