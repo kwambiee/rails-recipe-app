@@ -10,7 +10,7 @@ class Ability
     else
       can :read, :all
       can :manage, Inventory, user_id: user.id
-      can :destroy, Inventory do |inventory|
+      can :destroy, Inventory do |_inventory|
         post.user_id == user.id
       end
     end

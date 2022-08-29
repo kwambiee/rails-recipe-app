@@ -1,5 +1,5 @@
 class InventoriesController < ApplicationController
-  before_action :inventory, only: [:show, :edit, :update, :destroy]
+  before_action :inventory, only: %i[show edit update destroy]
 
   def index
     @user = User.find(params[:user_id])
@@ -48,12 +48,10 @@ class InventoriesController < ApplicationController
 
     # Destroy/delete the record
     @inventory_item.destroy
-    
 
     # Redirect
     respond_to do |format|
       format.html { redirect_to user_inventories_path, notice: 'Inventory was removed.' }
     end
   end
-
 end
