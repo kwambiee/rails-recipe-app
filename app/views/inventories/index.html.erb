@@ -5,13 +5,13 @@
 <div id="inventories">
   <% @inventories.each do |inventory| %>
     <p>
-      <%= link_to "/users/#{inventory.user.id}/inventories/#{inventory.id}" do %>
+      <%= link_to "/inventories/#{inventory.id}" do %>
     <%= render inventory %>
     <% end %>
     
     </p>
-    <%= button_to 'Remove', 'user_inventory_path(inventory)', method: :delete, data: { confirm: 'Are you sure you want to remove?' } %>
+    <%= button_to 'Remove', 'inventory_path(inventory)', method: :delete, data: { confirm: 'Are you sure you want to remove?' } %>
   <% end %>
 </div>
 
-<%= link_to "New inventory", new_user_inventory_path %>
+<%= link_to "New inventory", new_inventory_path %>
