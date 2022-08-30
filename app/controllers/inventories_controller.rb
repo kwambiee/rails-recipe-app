@@ -1,57 +1,71 @@
-class InventoriesController < ApplicationController
-  before_action :inventory, only: %i[show edit update destroy]
+class inventorysController < ApplicationController
+  before_action :set_inventory, only: %i[show edit update destroy]
 
+  # GET /inventorys or /inventorys.json
   def index
-    # @user = User.find(params[:user_id])
-    @inventories = Inventory.includes(:user).where(user: params[:user_id])
+    @inventories = Inventory.all
   end
 
+  # GET /inventorys/1 or /inventorys/1.json
   def show
-    @inventory = inventory.includes(:user, inventory_foods: [:user]).find(params[:id])
-    authorize! :read, @inventory
+    @inventories = Inventory.find(params[:id])
   end
 
-  def create # rubocop:disable Metrics/MethodLength
-    inventory = params[:inventory]
-    # authorize! :manage, inventory
-    user = User.find(params[:user_id])
-    inventory = Inventory.new(inventory.permit(:name, :description))
-    inventory.user_id = user.id
+  # GET /inventorys/new
+  def new
+    @inventory = Inventory.new
+  end
+
+  # GET /inventorys/1/edit
+  def edit; end
+
+  # POST /inventorys or /inventorys.json
+  def create
+    @inventory = Inventory.new(inventory_params)
+
     respond_to do |format|
-      format.html do
-        if inventory.save
-          # success message
-          flash[:success] = 'inventory saved successfully'
-          # redirect to index
-          redirect_to user_inventories_path
-        else
-          # error message
-          flash.now[:error] = 'Error: inventory could not be saved'
-          # render new
-          render :new, locals: { inventory: }
-        end
-      end
-    end
-
-    def new # rubocop:disable Lint/NestedMethodDefinition
-      # authorize! :manage, inventory
-      inventory = Inventory.new
-      respond_to do |format|
-        format.html { render :new, locals: { inventory: } }
+      if @inventory.save
+        format.html { redirect_to inventory_url(@inventory), notice: 'inventory was successfully created.' }
+        format.json { render :show, status: :created, location: @inventory }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @inventory.errors, status: :unprocessable_entity }
       end
     end
   end
 
+  # PATCH/PUT /inventorys/1 or /inventorys/1.json
+  def update
+    respond_to do |format|
+      if @inventory.update(inventory_params)
+        format.html { redirect_to inventory_url(@inventory), notice: 'inventory was successfully updated.' }
+        format.json { render :show, status: :ok, location: @inventory }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @inventory.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  # DELETE /inventorys/1 or /inventorys/1.json
   def destroy
-    # Perform the lookup
-    @inventory_item = Inventory.find(params[:id])
+    @inventory.destroy
 
-    # Destroy/delete the record
-    @inventory_item.destroy
-
-    # Redirect
     respond_to do |format|
-      format.html { redirect_to user_inventories_path, notice: 'Inventory was removed.' }
+      format.html { redirect_to inventories_url, notice: 'inventory was successfully destroyed.' }
+      format.json { head :no_content }
     end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_inventory
+    @inventory = Inventory.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def inventory_params
+    params.fetch(:inventory, {})
   end
 end
