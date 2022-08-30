@@ -20,12 +20,15 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @name = Recipe.where(public: true)
-    recipes = Recipe.where(public: true).pluck(:id)
-    # recipes =recipes.pluck(:id)
-    foods = RecipeFood.where(recipe_id: recipes).pluck(:food_id).uniq
-    food_count = foods.count
-    # @recipes = Recipe.includes(:user, recipe_foods: [:food]).where(users: {public: true}).order(created_at: :desc)
+    @result = []
+    @recipes = Recipe.includes(:user).where(user: current_user, public: true)
+    @recipes.each do |recipe|
+      total =0
+      recipe.foods.each do |food|
+        total += food.price
+      end
+      @result << {:title => recipe.name,:user=> recipe.user.name, :count => recipe.foods.size, :price => total}
+    end
     render :public_recipe
   end
 end
