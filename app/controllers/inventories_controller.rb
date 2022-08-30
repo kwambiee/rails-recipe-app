@@ -6,7 +6,7 @@ class InventoriesController < ApplicationController
   end
 
   def show
-    @inventory = inventory.includes(inventory_foods: [:user]).find(params[:id])
+    @inventory = Inventory.find(params[:id])
     authorize! :read, @inventory
   end
 
