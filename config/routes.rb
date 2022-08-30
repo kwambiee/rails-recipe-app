@@ -8,4 +8,9 @@ Rails.application.routes.draw do
   resources :recipes, only: [:index, :show, :destroy]
   resources :foods, only: [:index, :show, :destroy]
 
+  scope "/public" do
+    get "/recipes", controller: :recipes, action: :public_recipes
+  end
+
+
 end

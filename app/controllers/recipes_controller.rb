@@ -21,14 +21,8 @@ class RecipesController < ApplicationController
     end
   end
 
-  # private
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_recipe
-  #     @recipe = Recipe.find(params[:id])
-  #   end
-
-  #   # Only allow a list of trusted parameters through.
-  #   def recipe_params
-  #     params.require(:recipe).permit(:name, :preparation-time, :cooking-time, :description, :public)
-  #   end
+  def public_recipes
+    @recipes = Recipe.where(public: true)
+    render :public_recipe
+  end
 end

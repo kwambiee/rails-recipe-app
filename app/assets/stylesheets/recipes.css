@@ -29,3 +29,13 @@ body {
 .d-flex {
   margin-right: 3rem;
 }
+.public-recipes{
+    margin: 1rem;
+    padding: 1rem;
+}
+.recipe-details{
+    border: 1px solid black;
+    margin-top: 1rem;
+    padding: 1rem;
+}
+
