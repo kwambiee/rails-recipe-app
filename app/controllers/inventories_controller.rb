@@ -2,7 +2,7 @@ class InventoriesController < ApplicationController
   before_action :inventory, only: %i[show edit update destroy]
 
   def index
-    @user = User.find(params[:user_id])
+    # @user = User.find(params[:user_id])
     @inventories = Inventory.includes(:user).where(user: params[:user_id])
   end
 
