@@ -17,6 +17,7 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
+    # @recipe = Recipe.find(params[:id])
     @result = []
     @recipes = Recipe.includes(:user).where(user: current_user, public: true)
     @recipes.each do |recipe|
