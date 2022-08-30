@@ -1,0 +1,20 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Recipes</h1>
+
+<div class="recipes" >
+  <% @recipes.each do |recipe| %>
+    <%= link_to recipe_path(recipe.id), class:"recipe_card" do %>
+      <div class="rec">
+        <strong><%= recipe.name %></strong>
+
+        <p><%= recipe.description.truncate(100) %></p>
+    <% end %>
+    <%= button_to "REMOVE", recipe, method: :delete, class:"remove" %>
+    <div>
+
+  <% end %>
+
+</div>
+
+
