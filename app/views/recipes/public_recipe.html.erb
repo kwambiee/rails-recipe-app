@@ -1,0 +1,12 @@
+<h2>Public Recipes </h2>
+
+<div class="public-recipes" >
+    <% @recipes.each do |recipe| %>
+        <div class="recipe-details py-3">
+        <strong><%= recipe.name %></strong>
+        <br>
+        By: <%= recipe.user.name %>
+        </div>
+    <% end %>
+
+</div>

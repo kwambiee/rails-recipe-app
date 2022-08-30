@@ -1,0 +1,15 @@
+<p style="color: green"><%= notice %></p>
+
+
+  <%= @recipe.name %>
+  <div class="d-flex justify-content-between">
+      <h5>Preparation_time: <%= @recipe.preparation_time %></h5>
+      <%= @recipe.public %>
+  </div>
+    <h5>Cooking_time: <%= @recipe.cooking_time %></h5>
+    <% "Steps go here" %>
+
+
+<div>
+  <%= link_to "Back to recipes", recipes_path %>
+</div>

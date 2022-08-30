@@ -5,8 +5,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "users#index"
 
-  resources :users do
-    resources :recipes, only: [:index, :show, :destroy]
-    resources :foods, only: [:index, :show, :new, :create, :destroy]
+  resources :users,only:[:index, :show]
+  resources :recipes, only: [:index, :show, :destroy]
+  resources :foods, only: [:index, :show, :destroy]
+
+  scope "/public" do
+    get "/recipes", controller: :recipes, action: :public_recipes
   end
+
+
 end

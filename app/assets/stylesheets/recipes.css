@@ -1,0 +1,42 @@
+body {
+  box-sizing: border-box;
+}
+
+.recipe_card {
+  display: flex;
+  width: 500px;
+  margin: 0 auto;
+  padding: 0.5rem;
+  text-decoration: none;
+  color: black;
+}
+
+.rec {
+  border: 0.2px solid black;
+  width: 500px;
+  margin: 0 auto;
+  margin-top: 1rem;
+}
+
+.recipe_card p {
+  padding-left: 4rem;
+}
+
+.public {
+  margin-right: 1rem;
+}
+
+.d-flex {
+  margin-right: 3rem;
+}
+
+.public-recipes {
+  margin: 1rem;
+  padding: 1rem;
+}
+
+.recipe-details {
+  border: 1px solid black;
+  margin-top: 1rem;
+  padding: 1rem;
+}
