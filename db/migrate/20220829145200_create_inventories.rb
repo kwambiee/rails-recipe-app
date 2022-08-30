@@ -3,7 +3,8 @@ class CreateInventories < ActiveRecord::Migration[7.0]
     create_table :inventories do |t|
       t.string :name
       t.text :description
-      t.references :user, null: false, foreign_key: true
+      t.references :user, null: false, foreign_key: { to_table: :users}
+
 
       t.timestamps
     end

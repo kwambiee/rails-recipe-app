@@ -2,18 +2,20 @@ class InventoriesController < ApplicationController
   before_action :inventory, only: %i[show edit update destroy]
 
   def index
-    @inventories = Inventory.all
+    @inventories = Inventory.includes(:user).where(user: current_user.id).all
   end
 
   def show
-    @inventory = Inventory.find(params[:id])
+    @inventory = inventory.includes(:user, inventory_foods: [:user]).find(params[:id])
     authorize! :read, @inventory
   end
 
-  def create # rubocop:disable Metrics/MethodLength
+  def create
     inventory = params[:inventory]
     # authorize! :manage, inventory
+    # user = User.find(params[:user_id])
     inventory = Inventory.new(inventory.permit(:name, :description))
+    inventory.user_id = current_user.id
     respond_to do |format|
       format.html do
         if inventory.save
