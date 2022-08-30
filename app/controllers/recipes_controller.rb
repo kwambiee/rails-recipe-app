@@ -20,9 +20,12 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @foods=current_user.foods
-    @prices=current_user.prices
-    @recipes = Recipe.where(public: true)
+    @name = Recipe.where(public: true)
+    recipes = Recipe.where(public: true).pluck(:id)
+    # recipes =recipes.pluck(:id)
+    foods = RecipeFood.where(recipe_id: recipes).pluck(:food_id).uniq
+    food_count = foods.count
+    # @recipes = Recipe.includes(:user, recipe_foods: [:food]).where(users: {public: true}).order(created_at: :desc)
     render :public_recipe
   end
 end
