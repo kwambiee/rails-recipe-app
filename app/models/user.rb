@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :inventories
   has_many :recipes, foreign_key: :user_id, class_name: 'Recipe'
+  has_many :foods, through: :recipe_foods, foreign_key: :recipe_id, class_name: 'Food'
 end

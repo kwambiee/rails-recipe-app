@@ -1,17 +1,12 @@
 class RecipesController < ApplicationController
-  # before_action :set_recipe, only: %i[ show edit update destroy ]
-
-  # GET /recipes or /recipes.json
   def index
     @recipes = Recipe.all
   end
 
-  # # GET /recipes/1 or /recipes/1.json
   def show
     @recipe = Recipe.find(params[:id])
   end
 
-  # # DELETE /recipes/1 or /recipes/1.json
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
@@ -22,7 +17,16 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    @recipes = Recipe.where(public: true)
+    # @recipe = Recipe.find(params[:id])
+    @result = []
+    @recipes = Recipe.includes(:user).where(user: current_user, public: true)
+    @recipes.each do |recipe|
+      total = 0
+      recipe.foods.each do |food|
+        total += food.price
+      end
+      @result << { title: recipe.name, user: recipe.user.name, count: recipe.foods.size, price: total }
+    end
     render :public_recipe
   end
 end

@@ -12,4 +12,13 @@ Recipe.create(name: "Perfect Baked Potato", preparation_time: "01:00:00", cookin
 Recipe.create(name: "Kenyan Beef Samosas", preparation_time: "01:30:00", cooking_time: "0:45:00", description: "Kenyan samosas are fun to make and freeze very well. They’re so versatile, you can use whatever ground meat and vegetables you happen to have. Just make sure to make extra for snacking on later.", public: true, user_id: 1)
 Recipe.create(name: "Kenyan Kebabs", preparation_time: "00:30:00", cooking_time: "0:45:00", description: "Kenyan kebabs are a specialty of my country, and are the perfect savoury mid-morning or late-evening snack, along with a cup of Kenyan tea. They are easy to prepare and taste absolutely amazing, especially when served with some sort of tamarind sauce to dip into.", public: false, user_id: 1)
 
+Food.create(name: "Chicken", measurement_unit: "pound", price: 5.00)
+Food.create(name: "Beef", measurement_unit: "kgs", price: 9.00)
+Food.create(name: "Rice", measurement_unit: "kgs", price: 5.00)
+
+RecipeFood.create(quantity: 3, food_id: 1, recipe_id: 1)
+RecipeFood.create(quantity: 4, food_id: 2, recipe_id: 2)
+RecipeFood.create(quantity: 4, food_id: 1, recipe_id: 2)
+RecipeFood.create(quantity: 10, food_id: 3, recipe_id: 3)
+RecipeFood.create(quantity: 5, food_id: 3, recipe_id: 1)
 

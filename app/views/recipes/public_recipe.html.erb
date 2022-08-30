@@ -1,12 +1,20 @@
 <h2>Public Recipes </h2>
 
 <div class="public-recipes" >
-    <% @recipes.each do |recipe| %>
+    <% @result.each do |recipe| %>
+        <% @recipes.each do |rec| %>
+        <%= link_to recipe_path(rec.id), class:"recipe_card" do %>
+
         <div class="recipe-details py-3">
-        <strong><%= recipe.name %></strong>
+        <strong><%= recipe[:title] %></strong>
         <br>
-        By: <%= recipe.user.name %>
+        By: <%= recipe[:user] %>
+        <br>
+        <div class="food_count">Food count: <%= recipe[:count] %></div>
+        <div class="food_price">Total price : $<%= recipe[:price] %></div>
         </div>
+    <% end %>
+    <% end %>
     <% end %>
 
 </div>
