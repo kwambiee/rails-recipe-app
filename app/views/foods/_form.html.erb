@@ -8,10 +8,19 @@
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
+
     </div>
   <% end %>
 
-  <div>
-    <%= form.submit %>
-  </div>
+  <%= form_with model: @food, url: foods_path, method: :food, data: { turbo: false }, local: true do |f|  %>
+    <%= f.text_field :name, :placeholder => 'Name' %>
+    <%= f.text_field :measurement_unit, :placeholder => 'Measurement Unit' %>
+    <%= f.text_field :price, :placeholder => 'Price' %>
+    <div>
+      <%= f.submit %>
+    </div>
+
+  <% end %>
+
+
 <% end %>
