@@ -44,7 +44,9 @@
             <td><%= food[2] %></td>
             <td>$<%= food[1] %></td>
             <td><%= button_to 'Remove',
-            recipe_recipe_food_path(@recipe,food[3]), method: :delete, class:"remove" %></td>
+            recipe_recipe_food_path(@recipe,food[3]), method: :delete, class:"remove" %>
+            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe,food[3]), class:"modify" %>
+            </td>
           </tr>
         <% end %>
       </tbody>
