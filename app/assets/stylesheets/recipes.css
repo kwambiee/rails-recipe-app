@@ -1,3 +1,5 @@
+@import "font-awesome";
+
 body {
   box-sizing: border-box;
 }
@@ -42,5 +44,6 @@ body {
 }
 .modal-content{
     height: 350px;
+    margin-top:100px;
 }
 
