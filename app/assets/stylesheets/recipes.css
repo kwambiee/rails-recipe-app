@@ -40,3 +40,7 @@ body {
   margin-top: 1rem;
   padding: 1rem;
 }
+.modal-content{
+    height: 350px;
+}
+

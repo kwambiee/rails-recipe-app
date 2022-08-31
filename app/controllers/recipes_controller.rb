@@ -5,6 +5,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
+    @foods = RecipeFood.joins(:recipe,:food).where(recipe: @recipe).pluck('foods.price','recipe_foods.quantity','foods.name')
   end
 
   def new
