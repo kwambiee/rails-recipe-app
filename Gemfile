@@ -71,10 +71,8 @@ group :test do
   gem 'selenium-webdriver'
   gem 'webdrivers'
 end
+
+gem 'cancancan'
 gem 'devise'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
-gem 'cancancan'
 gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
-group :test do
-  gem "capybara"
-end
