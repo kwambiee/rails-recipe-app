@@ -7,6 +7,31 @@ class RecipesController < ApplicationController
     @recipe = Recipe.find(params[:id])
   end
 
+  def new
+    @recipe = Recipe.new
+  end
+
+  def create
+    @recipe = Recipe.new(recipe_params)
+    @recipe.user = current_user
+    respond_to do |format|
+      format.html do
+        if @recipe.save
+          # success message
+          flash[:success] = 'recipe saved successfully'
+          # redirect to index
+          redirect_to recipes_path
+        else
+          # error message
+          flash.now[:error] = 'Error: recipe could not be saved'
+          # render new
+          render :new, locals: { recipe: }
+        end
+      end
+    end
+  end
+
+
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
@@ -17,7 +42,6 @@ class RecipesController < ApplicationController
   end
 
   def public_recipes
-    # @recipe = Recipe.find(params[:id])
     @result = []
     @recipes = Recipe.includes(:user).where(user: current_user, public: true)
     @recipes.each do |recipe|
@@ -29,4 +53,9 @@ class RecipesController < ApplicationController
     end
     render :public_recipe
   end
+
+  private
+    def recipe_params
+      params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+    end
 end

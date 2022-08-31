@@ -1,19 +1,16 @@
 class InventoriesController < ApplicationController
-  before_action :inventory, only: %i[show edit update destroy]
+
 
   def index
-    @inventories = Inventory.includes(:user).where(user: current_user.id).all
+    @inventories = Inventory.all
   end
 
   def show
-    @inventory = inventory.includes(:user, inventory_foods: [:user]).find(params[:id])
-    authorize! :read, @inventory
+    @inventory = Inventory.find(params[:id])
   end
 
   def create
     inventory = params[:inventory]
-    # authorize! :manage, inventory
-    # user = User.find(params[:user_id])
     inventory = Inventory.new(inventory.permit(:name, :description))
     inventory.user_id = current_user.id
     respond_to do |format|
@@ -31,6 +28,7 @@ class InventoriesController < ApplicationController
         end
       end
     end
+  end
 
     def new # rubocop:disable Lint/NestedMethodDefinition
       # authorize! :manage, inventory
@@ -39,14 +37,13 @@ class InventoriesController < ApplicationController
         format.html { render :new, locals: { inventory: } }
       end
     end
-  end
 
   def destroy
     # Perform the lookup
-    @inventory_item = Inventory.find(params[:id])
+    @inventory = Inventory.find(params[:id])
 
     # Destroy/delete the record
-    @inventory_item.destroy
+    @inventory.destroy
 
     # Redirect
     respond_to do |format|

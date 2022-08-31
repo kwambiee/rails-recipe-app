@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   root "users#index"
 
 
-    resources :recipes, only: [:index, :show, :destroy]
+    resources :recipes, only: [:index, :show, :new, :create, :destroy]
     resources :foods, only: [:index, :show, :new, :create, :destroy]
     resources :inventories, only: [:index, :show, :new, :create, :destroy]
 
