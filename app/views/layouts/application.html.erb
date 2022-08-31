@@ -12,12 +12,18 @@
   </head>
 
   <body>
-  <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+
+
     <% if notice %>
       <p class="alert alert-success"><%= notice %></p>
     <% end %>
     <% if alert %>
       <p class="alert alert-danger"><%= alert %></p>
+    <% end %>
+    <% if current_user %>
+      <p>Logged in as <%= current_user.email %>
+      <%= link_to "Logout", destroy_user_session_path, data: { turbo_method: :delete } %>
+      </p>
     <% end %>
     <%= yield %>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
