@@ -1,17 +1,42 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Foods</h1>
+<%= link_to "New food", new_food_path %>
 
 <div id="foods">
   <% @foods.each do |food| %>
     <%= render food %>
-    <p>
-      <%= link_to "Show this food", food %>
-    </p>
-    <p><b>Name </b><%= food.name %></p>
-    <p><b>Measurement Unit: </b></b><%= food.measurement_unit %></p>
-    <p><b>Price: </b><%= food.price %></p>
+    <table>
+      <tr>
+        <th>
+          <p><b>Name: </b></p>
+        </th>
+        <th>
+          <p><b>Measurement Unit: </b></p>
+        </th>
+        <th>
+          <p><b>Price: </b></p>
+        </th>
+      </tr>
+      <tr>
+        <td>
+          <p><%= food.name %></p>
+        </td>
+        <td>
+          <p><%= food.measurement_unit %></p>
+        </td>
+        <td>
+          <p><%= food.price %></p>
+        </td>
+        <td>
+          <p><%= link_to "Show this food", food %></p>
+        </td>
+        <td>
+          <p><%= link_to 'Delete', food, method: :delete, data: { confirm: 'Are you sure?' } %></p>
+        </td>
+      </tr>
+    </table>
   <% end %>
 </div>
 
-<%= link_to "New food", new_food_path %>
+
