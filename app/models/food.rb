@@ -4,6 +4,6 @@ class Food < ApplicationRecord
   has_many :inventory_foods, foreign_key: :food_id, class_name: 'InventoryFood'
 
   validates :name, presence: true
-  validates :measurement_unit, numericality: { only_integer: true, greater_than: 0 }
-  validates :price, numericality: { only_integer: true, greater_than: 0 }
+  validates :measurement_unit, numericality: { only_float: true, greater_than: 0 }
+  validates :price, numericality: { only_float: true, greater_than: 0 }
 end

@@ -11,7 +11,7 @@ RSpec.describe Food, type: :model do
     expect(subject).to be_valid
   end
   it 'is valid with valid attributes' do
-    subject.measurement_unit = 2
+    subject.measurement_unit = 2.0
     expect(subject).to be_valid
   end
   it 'is valid with valid attributes' do
