@@ -54,6 +54,12 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+group :development, :test do
+  gem 'rspec-rails'
+end
+
+gem 'rails-controller-testing'
+
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem 'web-console'
@@ -75,4 +81,3 @@ end
 gem 'cancancan'
 gem 'devise'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
-gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
