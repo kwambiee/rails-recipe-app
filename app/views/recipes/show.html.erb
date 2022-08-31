@@ -64,13 +64,13 @@
       <div class="modal-body">
         <p> Choose an inventory to use </p>
       <div class="d-flex justify-content-evenly">
-        <select id="cars" name="cars">
-          <option value="inventory">select inventory</option>
-          <option value="one">Inventory 2</option>
-          <option value="two">Inventory 3</option>
-          <option value="three">Inventory 4</option>
-        </select>
+      <%= form_for @recipe do |f| %>
+        <%= f.label 'select inventory' %>
+        <%= f.select :name, @inventories %>
+          <% end %>
+
         <button> Generate </button>
+
         </div>
       </div>
       <div class="modal-footer">

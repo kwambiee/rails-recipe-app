@@ -1,5 +1,4 @@
 class RecipeFoodsController < ApplicationController
-
   def new
     @recipe_food = RecipeFood.new
   end
@@ -12,14 +11,13 @@ class RecipeFoodsController < ApplicationController
   def update
     @recipe_food = RecipeFood.find(params[:id])
     @recipe_food.update(food_params)
-    redirect_to recipe_path(params[:recipe_id]), notice: "Successfully updated the food."
+    redirect_to recipe_path(params[:recipe_id]), notice: 'Successfully updated the food.'
   end
-
 
   def destroy
     @recipe_food = RecipeFood.find(params[:id])
     @recipe_food.destroy
-    redirect_to recipe_path(params[:recipe_id]), notice: "Successfully deleted the food."
+    redirect_to recipe_path(params[:recipe_id]), notice: 'Successfully deleted the food.'
   end
 
   private

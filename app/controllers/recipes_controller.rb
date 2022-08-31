@@ -5,7 +5,11 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @foods = RecipeFood.joins(:recipe,:food).where(recipe: @recipe).pluck('foods.name', 'foods.price', 'recipe_foods.quantity', 'recipe_foods.id')
+    @foods = RecipeFood.joins(:recipe, :food).where(recipe: @recipe).pluck('foods.name', 'foods.price',
+                                                                           'recipe_foods.quantity', 'recipe_foods.id')
+    @user = User.find(@recipe.user_id)
+    @inventories = @recipe.user.inventories.pluck('inventories.name')
+    # User.joins(:inventories,:recipe).where(recipe:@recipe).pluck('inventories.name')
   end
 
   def new
@@ -32,7 +36,6 @@ class RecipesController < ApplicationController
     end
   end
 
-
   def destroy
     @recipe = Recipe.find(params[:id])
     @recipe.destroy
@@ -56,7 +59,8 @@ class RecipesController < ApplicationController
   end
 
   private
-    def recipe_params
-      params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
-    end
+
+  def recipe_params
+    params.require(:recipe).permit(:name, :preparation_time, :cooking_time, :description, :public)
+  end
 end

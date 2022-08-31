@@ -1,6 +1,4 @@
 class InventoriesController < ApplicationController
-
-
   def index
     @inventories = Inventory.all
   end
@@ -30,13 +28,13 @@ class InventoriesController < ApplicationController
     end
   end
 
-    def new # rubocop:disable Lint/NestedMethodDefinition
-      # authorize! :manage, inventory
-      inventory = Inventory.new
-      respond_to do |format|
-        format.html { render :new, locals: { inventory: } }
-      end
+  def new
+    # authorize! :manage, inventory
+    inventory = Inventory.new
+    respond_to do |format|
+      format.html { render :new, locals: { inventory: } }
     end
+  end
 
   def destroy
     # Perform the lookup

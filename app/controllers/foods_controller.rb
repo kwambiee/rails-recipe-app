@@ -49,7 +49,7 @@ class FoodsController < ApplicationController
 
   # DELETE /foods/1 or /foods/1.json
   def destroy
-    @foods= Food.find(params[:id])
+    @foods = Food.find(params[:id])
     @food.destroy
 
     respond_to do |format|
