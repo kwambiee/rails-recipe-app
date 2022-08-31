@@ -73,3 +73,5 @@ group :test do
 end
 gem 'devise'
 gem 'faker', git: 'https://github.com/faker-ruby/faker.git', branch: 'master'
+gem 'cancancan'
+gem 'rspec-rails', '~> 3.4', '>= 3.4.2'
