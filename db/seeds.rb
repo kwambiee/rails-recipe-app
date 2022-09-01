@@ -22,3 +22,13 @@ RecipeFood.create(quantity: 4, food_id: 1, recipe_id: 2)
 RecipeFood.create(quantity: 10, food_id: 3, recipe_id: 3)
 RecipeFood.create(quantity: 5, food_id: 3, recipe_id: 1)
 
+Inventory.create(name:"Meat inventory", description:"Meat has 40 purchases", user_id: 1)
+Inventory.create(name:"Rice inventory", description:"Rice has 100 purchases", user_id: 1)
+Inventory.create(name:"Chicken inventory", description:"Chicken has 20 purchases", user_id: 1)
+Inventory.create(name:"Beef inventory", description:"Beef has 80 purchases", user_id: 1)
+
+InventoryFood.create(quantity: 20, food_id: 1, inventory_id: 1)
+InventoryFood.create(quantity: 40, food_id: 2, inventory_id: 1)
+InventoryFood.create(quantity: 80, food_id: 3, inventory_id: 3)
+InventoryFood.create(quantity: 100, food_id: 3, inventory_id: 2)
+
