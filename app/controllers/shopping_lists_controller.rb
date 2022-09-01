@@ -1,6 +1,9 @@
 class ShoppingListsController < ApplicationController
   def index
-    p params
+    @recipe = Recipe.find(params[:id])
+    @inventories = @recipe.user.inventories.pluck(:name, :id)
+    @quantity = @recipe.recipe_foods.pluck(:quantity)
+
   end
 
   def create
