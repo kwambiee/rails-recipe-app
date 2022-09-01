@@ -22,7 +22,8 @@ class InventoryFoodsController < ApplicationController
    # POST /inventory_foods or /inventory_foods.json
 def create
   @foods = Food.where(user_id: current_user.id)
-  @food = Food.find(inventory_food_params['food'])
+  @food = Food.find(inventory_food_params['food']).pluck('id')
+  puts @food
   @inventory = Inventory.find(params[:inventory_id])
   @inventory_food = InventoryFood.new(quantity: inventory_food_params['quantity'].to_i, food: @food, inventory: @inventory)
 
