@@ -11,10 +11,14 @@ Rails.application.routes.draw do
     end
 
     resources :foods, only: [:index, :show, :new, :create, :destroy]
-    resources :inventories, only: [:index, :show, :new, :create, :destroy]
+    resources :inventories, only: [:index, :show, :new, :create, :destroy] do
+      resources :inventory_foods, only: [:new, :create, :destroy]
+    end
 
   scope "/public" do
     get "/recipes", controller: :recipes, action: :public_recipes
   end
+
+  resources :shopping_lists, only: [:index, :create]
 
 end

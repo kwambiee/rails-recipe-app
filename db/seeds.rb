@@ -29,6 +29,6 @@ Inventory.create(name:"Beef inventory", description:"Beef has 80 purchases", use
 
 InventoryFood.create(quantity: 20, food_id: 1, inventory_id: 1)
 InventoryFood.create(quantity: 40, food_id: 2, inventory_id: 1)
-InventoryFood.create(quantity: 80, food_id: 3, inventory_id: 1)
-InventoryFood.create(quantity: 100, food_id: 3, inventory_id: 1)
+InventoryFood.create(quantity: 80, food_id: 3, inventory_id: 3)
+InventoryFood.create(quantity: 100, food_id: 3, inventory_id: 2)
 

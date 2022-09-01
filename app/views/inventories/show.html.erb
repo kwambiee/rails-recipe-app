@@ -1,8 +1,30 @@
 <p style="color: green"><%= notice %></p>
 
 <%= render @inventory %>
+<%= link_to 'Add food' %>
 
-<div>
-    <%= link_to "Back to inventories", inventories_path %>
 
-</div>
+  <div>
+    <table>
+      <thead>
+        <tr>
+          <th>Food</th>
+          <th>Quantity</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @foods.each do |food| %>
+          <tr>
+            <td><%= food[0] %></td>
+            <td><%= food[1] %></td>
+            <td><%= button_to 'Remove',
+            inventory_inventory_food_path(@inventory,food[2]), method: :delete, class:"remove" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  </div>
+
+
