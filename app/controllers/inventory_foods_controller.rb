@@ -8,6 +8,4 @@ class InventoryFoodsController < ApplicationController
     @inventory_food.destroy
     redirect_to inventory_path(params[:inventory_id]), notice: 'Successfully deleted the food.'
   end
-
-
 end

@@ -3,7 +3,6 @@ class ShoppingListsController < ApplicationController
     @recipe = Recipe.find(params[:id])
     @inventories = @recipe.user.inventories.pluck(:name, :id)
     @quantity = @recipe.recipe_foods.pluck(:quantity)
-
   end
 
   def create
@@ -26,6 +25,7 @@ class ShoppingListsController < ApplicationController
   end
 
   private
+
   def shopping_list_params
     params.require(:shopping_list).permit(:recipe_id, :inventory_id)
   end
