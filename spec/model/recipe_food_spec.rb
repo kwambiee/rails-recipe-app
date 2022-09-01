@@ -10,5 +10,4 @@ RSpec.describe RecipeFood, type: :model do
     subject.quantity = 1
     expect(subject).to be_valid
   end
-
 end
