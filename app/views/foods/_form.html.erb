@@ -1,4 +1,7 @@
-<%= form_with(model: food) do |form| %>
+<div class="container">
+
+
+  <%= form_with(model: food) do |form| %>
   <% if food.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(food.errors.count, "error") %> prohibited this food from being saved:</h2>
@@ -13,14 +16,25 @@
   <% end %>
 
   <%= form_with model: @food, url: foods_path, method: :food, data: { turbo: false }, local: true do |f|  %>
-    <%= f.text_field :name, :placeholder => 'Name' %>
-    <%= f.text_field :measurement_unit, :placeholder => 'Measurement Unit' %>
-    <%= f.text_field :price, :placeholder => 'Price' %>
-    <div>
-      <%= f.submit %>
-    </div>
+    <%= f.text_field :name, :placeholder => 'Name' , class: 'form-control'%>
+      <br>
+    <%= f.text_field :measurement_unit, :placeholder => 'Measurement Unit', class: 'form-control'%>
+      <br>
+    <%= f.text_field :price, :placeholder => 'Price', class: 'form-control' %>
+      <br>
+      <button class='btn btn-outline-dark btn-sm' href='<% f.submit %>'>Submit
+      </button>
+
+        <%= link_to "Back to foods", foods_path, class: 'btn btn-outline-dark btn-sm'%>
+
+
+
+
+
 
   <% end %>
 
 
 <% end %>
+
+</div>
