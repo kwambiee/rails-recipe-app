@@ -8,20 +8,20 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control mt-4' %>
     </div>
 
-    <div class="field">
+    <div class="form-group">
       <%= f.label :password, class: 'mt-4' %><br />
       <%= f.password_field :password, autocomplete: "current-password" , class: 'form-control mt-4' %>
     </div>
 
     <% if devise_mapping.rememberable? %>
-      <div class="field m-2">
+      <div class="form-group m-2">
         <%= f.check_box :remember_me, class: 'pt-5' %>
         <%= f.label :remember_me %>
       </div>
     <% end %>
 
     <div class="actions">
-      <%= f.submit "Log in", class: "form-control btn btn-primary"%>
+      <%= f.submit "Log in", class: "form-control btn btn-primary mt-4"%>
     </div>
   <% end %>
 </div>
