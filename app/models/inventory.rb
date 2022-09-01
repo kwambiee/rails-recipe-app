@@ -1,5 +1,7 @@
 class Inventory < ApplicationRecord
-  validates :user_id, presence: false
+  validates :user_id, presence: true
+  validates :name, presence: true, length: { maximum: 50 }
+
 
   belongs_to :user, class_name: 'User'
   has_many :inventory_foods, foreign_key: :inventory_id, class_name: 'InventoryFood', dependent: :destroy

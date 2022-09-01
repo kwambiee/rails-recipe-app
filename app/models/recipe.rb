@@ -2,7 +2,7 @@ class Recipe < ApplicationRecord
   validates :name, presence: true
   validates :preparation_time, presence: true
   validates :cooking_time, presence: true
-  validates :description, presence: true, allow_blank: false
+  validates :description, presence: true, allow_blank: false, length: { maximum: 500 }
 
 
   belongs_to :user, class_name: 'User'
