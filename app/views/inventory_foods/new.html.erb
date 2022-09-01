@@ -1,0 +1,10 @@
+<h1>New inventory food</h1>
+
+<%= render "form", inventory_food: @inventory_food %>
+
+
+<br>
+
+<div>
+  <%= link_to "Back to inventory foods", "/inventories/#{@inventory_food && @inventory_food.inventory_id}" %>
+</div>

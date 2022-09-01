@@ -1,13 +1,13 @@
 class InventoriesController < ApplicationController
-  before_action :inventory, only: %i[show edit update destroy]
 
   def index
     @inventories = Inventory.includes(:user).where(user: current_user.id).all
   end
 
   def show
-    @inventory = inventory.includes(:user, inventory_foods: [:user]).find(params[:id])
-    authorize! :read, @inventory
+    # @inventory = inventory.includes(:user, inventory_foods: [:user]).find(params[:id])
+    @inventory = Inventory.includes(:user).where(id: params[:id])
+    @inventory_foods = InventoryFood.includes(:food, :inventory).where(inventory_id: params[:id])
   end
 
   def create

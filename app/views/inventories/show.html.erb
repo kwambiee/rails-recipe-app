@@ -1,10 +1,48 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+  <div><%= @inventory.each do |inventory| %>
+    Inventory <%= inventory.id %>
 
-<%= render @inventory %>
+    </div>
+  <div>
+ 
+  </div>
+  <div>
 
-<div>
-  <%= link_to "Edit this inventory", edit_inventory_path(@inventory) %> |
-  <%= link_to "Back to inventories", inventories_path %>
-
-  <%= button_to "Destroy this inventory", @inventory, method: :delete %>
+    <% if  %>
+      <div class="add_ing">
+        <%= link_to 'Add Food', "/inventories/#{inventory.id}/inventory_foods/new", class: "btn btn-primary" %>
+      </div>
+    <% end %>
+  </div>
+  <table class="table">
+    <thead>
+    <tr>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <% @inventory_foods.each do |inventory_food| %>
+      <tr>
+        <td><%= inventory_food.food.name %></td>
+        <td><%= inventory_food.quantity %> <%= inventory_food.food.measurement_unit %></td>
+        <td>
+          <div>
+            <div>
+              <%= button_to 'Modify', method: :put, class: "btn btn-primary" %>
+            </div>
+            <% if can? :destroy, inventory_food.food %>
+              <div>
+                <%= button_to 'Remove', method: :delete, class: "btn btn-danger" %>
+              </div>
+            <% end %>
+          </div>
+        </td>
+      </tr>
+    <% end %>
+    </tbody>
+  </table>
+  <% end %>
 </div>
+
