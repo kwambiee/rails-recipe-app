@@ -4,6 +4,7 @@ class InventoryFoodsController < ApplicationController
    # GET /inventory_foods or /inventory_foods.json
    def index
      @inventory_foods = InventoryFood.all
+     
    end
 
    # GET /inventory_foods/1 or /inventory_foods/1.json
@@ -12,8 +13,10 @@ class InventoryFoodsController < ApplicationController
 
    # GET /inventory_foods/new
    def new
-     @inventory_food = InventoryFood.new
-   end
+    @inventory_food = InventoryFood.new
+    @inventory = Inventory.find(params[:inventory_id])
+    @foods = Food.where(user_id: current_user.id).all
+  end
 
    # GET /inventory_foods/1/edit
    def edit
@@ -22,8 +25,6 @@ class InventoryFoodsController < ApplicationController
    # POST /inventory_foods or /inventory_foods.json
 def create
   @foods = Food.where(user_id: current_user.id)
-  @food = Food.find(inventory_food_params['food']).pluck('id')
-  puts @food
   @inventory = Inventory.find(params[:inventory_id])
   @inventory_food = InventoryFood.new(quantity: inventory_food_params['quantity'].to_i, food: @food, inventory: @inventory)
 
@@ -73,63 +74,19 @@ end
      end
  end
 
+ def create
+  @recipe_food = RecipeFood.new(recipe_food_params)
+  if @recipe_food.save
+    redirect_to new_recipe_recipe_food_path(@recipe_food.recipe_id)
+  else
+    render :new
+  end
+end
 
 
-# class InventoryFoodController < ApplicationController
+def update
+  @recipe_food = RecipeFood.find(params[:id])
+  @recipe_food.update(recipe_ingredient_params)
+  redirect_to recipe_path(@recipe_food.recipe_id)
+end
 
-
-#   # GET /inventory_foods or /inventory_foods.json
-#   def index
-#     @inventory_foods = inventoryFood.all
-#   end
-
-#   # GET /inventory_foods/1 or /inventory_foods/1.json
-#   def show; end
-
-#   # GET /inventory_foods/new
-#   def new
-#     @inventory_food = inventoryFood.new
-#     @recipe = Recipe.find(params[:recipe_id])
-#     @foods = Food.where(user_id: current_user.id)
-#   end
-
-#   # POST /inventory_foods or /inventory_foods.json
-#   def create
-#     @foods = Food.where(user_id: current_user.id)
-#     @food = Food.find(inventory_food_params['food'])
-#     @recipe = Inventory.find(params[:recipe_id])
-#     @inventory_food = InventoryFood.new(quantity: inventory_food_params['quantity'].to_i, food: @food, inventory: @inventory)
-
-#     respond_to do |format|
-#       if @inventory_food.save
-#         format.html { redirect_to inventory_path, notice: 'inventory food was successfully created.' }
-#         format.json { render :show, status: :created, location: @inventory_foods }
-#       else
-#         format.html { render :new, status: :unprocessable_entity }
-#         format.json { render json: @inventory_food.errors, status: :unprocessable_entity }
-#       end
-#     end
-#   end
-
-#   # DELETE /inventory_foods/1 or /inventory_foods/1.json
-#   def destroy
-#     @inventory_food.destroy
-
-#     respond_to do |format|
-#       format.html { redirect_to inventoryFoods_url, notice: 'inventory food was successfully destroyed.' }
-#       format.json { head :no_content }
-#     end
-#   end
-
-#   private
-
-#   # Use callbacks to share common setup or constraints between actions.
-#   def set_inventory_food
-#     @inventory_food = inventoryFood.find(params[:id])
-#   end
-
-#   # Only allow a list of trusted parameters through.
-#   def inventory_food_params
-#     params.require(:inventory_food).permit(:food, :quantity)
-#   end
-# end

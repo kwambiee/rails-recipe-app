@@ -8,8 +8,11 @@ Rails.application.routes.draw do
 
 
     resources :recipes, only: [:index, :show, :destroy]
-    resources :foods, only: [:index, :show, :new, :create, :destroy]
+    resources :foods, only: [:index, :show, :new, :create, :destroy] do 
+      resources :inventory_foods, only: [:index, :show, :new, :create, :destroy]
+    end
     resources :inventories, only: [:index, :show, :new, :create, :destroy] do
+      
       resources :inventory_foods, only: [:index, :show, :new, :create, :destroy]
     end
 

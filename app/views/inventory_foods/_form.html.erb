@@ -16,6 +16,11 @@
     <%= form.number_field :quantity %>
   </div>
 
+  <div>
+    <%= form.label :food, style: "display: block" %>
+    <%= form.select(:food_id, @foods.map {|food| [food.name, food.id]}, class: 'select_input_form' ) %>
+  </div>
+
 
   <div>
     <%= form.submit %>
