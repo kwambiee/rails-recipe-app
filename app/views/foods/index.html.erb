@@ -13,10 +13,9 @@
         <tr>
           <th class="col">#</th>
           <th class="col">Name</th>
-          <th class="col">Measurement Unit</th>
+          <th class="col">Units</th>
           <th class="col">Price</th>
-          <th class="col">Show the food</th>
-          <th class="col">Delete</th>
+          <th class="col">Details</th>
         </tr>
       </thead>
       <% @foods.each do |food| %>
@@ -27,8 +26,7 @@
               <td><%= food.name %></td>
               <td><%= food.measurement_unit %></td>
               <td><%= food.price %></p></td>
-              <td><%= button_to "Show", food, class: 'btn btn-success' %></td>
-              <td><%= button_to 'Delete',  food, class:'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
+              <td><%= link_to "Show", food, class: 'btn btn-success' %></td>
             </tr>
           </tbody>
       <% end %>

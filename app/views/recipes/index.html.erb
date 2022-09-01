@@ -1,23 +1,25 @@
 <p style="color: green"><%= notice %></p>
-
-<h1>Recipes</h1>
-<div class="btn">
-  <%= link_to "Add recipe", new_recipe_path %>
+<div class="card-header container text-center">
+  Recipes
+  <%= link_to "Add recipe", new_recipe_path, class: 'btn btn-dark btn-sm' %>
+</div>
+<% @recipes.each do |recipe| %>
+  <br>
+  <div class="container card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4 p-1">
+      <h1><%= recipe.name %></h1>
+      <%= link_to "REMOVE", recipe, method: :delete, class: 'btn btn-light btn-sm mb-2' %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= recipe.description.truncate(100) %></h5>
+      </div>
+    </div>
+  </div>
 </div>
 
-<div class="recipes" >
-  <% @recipes.each do |recipe| %>
-    <%= link_to recipe_path(recipe.id), class:"recipe_card" do %>
-      <div class="rec">
-        <strong><%= recipe.name %></strong>
+<% end %>
 
-        <p><%= recipe.description.truncate(100) %></p>
-    <% end %>
-    <%= button_to "REMOVE", recipe, method: :delete, class:"remove" %>
-    <div>
-
-  <% end %>
-
-</div>
 
 
