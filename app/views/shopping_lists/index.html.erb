@@ -1,0 +1,38 @@
+<h3> Hey yall! </h3>
+# <div class= "d-flex">
+#     <div>
+#         <p> Amount of food to buy:@recipe.foods.size </p>
+#         <p>Total Value of food needed: @recipe.foods.sum(&:price) </p>
+#     </div>
+#     <div>
+#         <p>Recipe : <%= @recipe.name %> </p>
+#         <% @inventories.each do |inventory| %>
+#         <p>Inventory: <%= inventory.name %></p>
+#     </div>
+# </div>
+# <div>
+#     <table>
+#       <thead>
+#         <tr>
+#           <th>Food</th>
+#           <th>Quantity</th>
+#           <th>Value</th>
+#         </tr>
+#       </thead>
+#       <tbody>
+#         <% @recipe.foods.each do |food| %>
+#             <% @quantity.each do |quantity| %>
+#           <tr>
+#             <td><%= food %></td>
+#             <td><%= quantity %></td>
+#             <td><%= button_to 'Remove' %></td>
+#           </tr>
+#         <% end %>
+#         <% end %>
+#       </tbody>
+#     </table>
+# </div>
+
+
+
+

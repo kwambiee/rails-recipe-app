@@ -1,6 +1,9 @@
 <p style="color: green"><%= notice %></p>
 
 <h1>Recipes</h1>
+<div class="btn">
+  <%= link_to "Add recipe", new_recipe_path %>
+</div>
 
 <div class="recipes" >
   <% @recipes.each do |recipe| %>

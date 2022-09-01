@@ -8,9 +8,9 @@
       <%= link_to "/inventories/#{inventory.id}" do %>
     <%= render inventory %>
     <% end %>
-    
+
     </p>
-    <%= button_to 'Remove', 'inventory_path(inventory)', method: :delete, data: { confirm: 'Are you sure you want to remove?' } %>
+    <%= button_to "REMOVE", inventory, method: :delete, class:"remove" %>
   <% end %>
 </div>
 
