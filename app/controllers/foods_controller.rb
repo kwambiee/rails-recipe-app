@@ -1,5 +1,5 @@
 class FoodsController < ApplicationController
-  before_action :set_food, only: %i[show edit update destroy]
+
 
   # GET /foods or /foods.json
   def index
@@ -9,11 +9,14 @@ class FoodsController < ApplicationController
   # GET /foods/1 or /foods/1.json
   def show
     @foods = Food.find(params[:id])
+
   end
 
   # GET /foods/new
   def new
-    @food = Food.new
+
+    @food =Food.new
+
   end
 
   # GET /foods/1/edit
@@ -22,10 +25,11 @@ class FoodsController < ApplicationController
   # POST /foods or /foods.json
   def create
     @food = Food.new(food_params)
+    @food.user = current_user
 
     respond_to do |format|
       if @food.save
-        format.html { redirect_to food_url(@food), notice: 'Food was successfully created.' }
+        format.html { redirect_to foods_path(@food), notice: 'Food was successfully created.' }
       else
         format.html { render :new, status: :unprocessable_entity }
       end
@@ -35,12 +39,13 @@ class FoodsController < ApplicationController
   # DELETE /foods/1 or /foods/1.json
   def destroy
     @foods = Food.find(params[:id])
-    @food.destroy
+    @foods.destroy
 
     respond_to do |format|
       format.html { redirect_to foods_url, notice: 'Food was successfully destroyed.' }
     end
   end
+
 
   private
 
@@ -51,6 +56,6 @@ class FoodsController < ApplicationController
 
   # Only allow a list of trusted parameters through.
   def food_params
-    params.require(:food).permit(:name, :measurement_unit, :price)
+    params.require(:food).permit(:user_id, :name, :measurement_unit, :price)
   end
 end

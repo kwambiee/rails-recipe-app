@@ -15,11 +15,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_064200) do
   enable_extension "plpgsql"
 
   create_table "foods", force: :cascade do |t|
+    t.bigint "user_id"
     t.string "name"
     t.string "measurement_unit"
     t.float "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_foods_on_user_id"
   end
 
   create_table "inventories", force: :cascade do |t|
@@ -85,6 +87,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_09_01_064200) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  add_foreign_key "foods", "users"
   add_foreign_key "inventories", "users"
   add_foreign_key "inventory_foods", "foods"
   add_foreign_key "inventory_foods", "inventories"

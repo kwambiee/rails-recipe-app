@@ -26,7 +26,7 @@
               <td><%= food.name %></td>
               <td><%= food.measurement_unit %></td>
               <td><%= food.price %></p></td>
-              <td><%= link_to "Show", food, class: 'btn btn-success' %></td>
+              <td><%= button_to "Delete", food, method: :delete, class:"btn btn-danger btn-sm" %></td>
             </tr>
           </tbody>
       <% end %>
