@@ -1,17 +1,33 @@
 <p style="color: green"><%= notice %></p>
 
-<h1>Inventories</h1>
+<div class="container">
+  <div class="text-center">
+    <h1>Inventories</h1>
 
-<div id="inventories">
-  <% @inventories.each do |inventory| %>
-    <p>
-      <%= link_to "/inventories/#{inventory.id}" do %>
-    <%= render inventory %>
+    <%= link_to "New inventory", new_inventory_path , class: 'btn btn-dark btn-sm mb-2'%>
+  </div>
+  <table class="table table-striped container m-3">
+
+    <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Food</th>
+      <th scope="col">Quantity</th>
+      <th scope="col">Action</th>
+
+    </tr>
+    </thead>
+    <% @inventories.each do |inventory| %>
+        <tbody>
+        <tr>
+          <th scope="row"><%= inventory.id %></th>
+          <td><%= inventory.name %></td>
+          <td><%= inventory.description %></td>
+          <td><%= inventory.description %></td>
+          <td><%= button_to "REMOVE", inventory, method: :delete, class:"remove", class: 'btn btn-light btn-sm mb-2' %></td>
+        </tr>
+
+        </tbody>
     <% end %>
-
-    </p>
-    <%= button_to "REMOVE", inventory, method: :delete, class:"remove" %>
-  <% end %>
+  </table>
 </div>
-
-<%= link_to "New inventory", new_inventory_path %>
