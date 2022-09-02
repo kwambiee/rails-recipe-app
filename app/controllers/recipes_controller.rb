@@ -5,9 +5,7 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @foods = RecipeFood.joins(:recipe, :food).where(recipe: @recipe).pluck('foods.name', 'foods.price', 'recipe_foods.quantity',
-                                                                           'recipe_foods.id')
-
+    @foods = RecipeFood.joins(:recipe, :food).where(recipe: @recipe).pluck('foods.name', 'foods.price', 'recipe_foods.quantity','recipe_foods.id')
     @inventories = @recipe.user.inventories.pluck(:name, :id)
   end
 

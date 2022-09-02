@@ -1,0 +1,14 @@
+<%= form_with model: @inventory_food, url: inventory_inventory_foods_path, method: :post, local: true, scope: :inventory_food do |form| %>
+    <div>
+        <%= form.label :quantity, class: "form-label" %>
+        <%= form.number_field :quantity, autofocus: true, min: 0, class: "form-control" %>
+    </div>
+    <div>
+        <%= form.label :food_id, class: "form-label" %>
+        <%= form.collection_select :food_id, @inventory_food.food, :id, :name %>
+    </div>
+    <div>
+        <%= form.submit "Add Food", class: "line_btn" %>
+    </div>
+<% end %>
+

@@ -51,3 +51,11 @@ body {
 .food-details {
   margin-left: 4rem;
 }
+.shopping{
+  width:700px;
+  padding-left: 10%;
+}
+.table-responsive{
+  width:500px;
+  margin:0 auto;
+}
