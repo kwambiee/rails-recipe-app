@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   # Defines the root path route ("/")
 
-  root "users#index"
+    root "users#index"
 
 
     resources :recipes, only: [:index, :show, :new, :create, :destroy] do
@@ -11,14 +11,17 @@ Rails.application.routes.draw do
     end
 
     resources :foods, only: [:index, :show, :new, :create, :destroy]
+
     resources :inventories, only: [:index, :show, :new, :create, :destroy] do
       resources :inventory_foods, only: [:new, :create, :destroy]
     end
 
-  scope "/public" do
-    get "/recipes", controller: :recipes, action: :public_recipes
-  end
+    resources :shopping_lists, only: [:index, :create]
 
-  resources :shopping_lists, only: [:index, :create]
+
+    scope "/public" do
+    get "/recipes", controller: :recipes, action: :public_recipes
+    end
+
 
 end
