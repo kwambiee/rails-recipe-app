@@ -1,6 +1,5 @@
 class InventoryFoodsController < ApplicationController
   def new
-    # @inventory_food = InventoryFood.new
     @foods = Food.all.pluck(:name, :id)
     @inventory = Inventory.find(params[:inventory_id])
   end

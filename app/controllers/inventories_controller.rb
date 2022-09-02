@@ -9,13 +9,14 @@ class InventoriesController < ApplicationController
                                                                                        'inventory_foods.id')
   end
 
+  def new; end
+
   def create
-    inventory = params[:inventory]
-    inventory = Inventory.new(inventory.permit(:name, :description))
-    inventory.user_id = current_user.id
+    @inventory = Inventory.new(inventory_params)
+    @inventory.user = current_user
     respond_to do |format|
       format.html do
-        if inventory.save
+        if @inventory.save
           # success message
           flash[:success] = 'inventory saved successfully'
           # redirect to index
@@ -24,17 +25,9 @@ class InventoriesController < ApplicationController
           # error message
           flash.now[:error] = 'Error: inventory could not be saved'
           # render new
-          render :new, locals: { inventory: }
+          render :new, locals: { inventory: @inventory }
         end
       end
-    end
-  end
-
-  def new
-    # authorize! :manage, inventory
-    inventory = Inventory.new
-    respond_to do |format|
-      format.html { render :new, locals: { inventory: } }
     end
   end
 
@@ -49,5 +42,11 @@ class InventoriesController < ApplicationController
     respond_to do |format|
       format.html { redirect_to inventories_path, notice: 'Inventory was removed.' }
     end
+  end
+
+  private
+
+  def inventory_params
+    params.require(:inventory).permit(:name, :description)
   end
 end

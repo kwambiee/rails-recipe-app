@@ -31,31 +31,7 @@
   </div>
   <hr>
 
-  <div>
-    <table>
-      <thead>
-        <tr>
-          <th>Food</th>
-          <th>Quantity</th>
-          <th>Value</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @foods.each do |food| %>
-          <tr>
-            <td><%= food[0] %></td>
-            <td><%= food[2] %></td>
-            <td>$<%= food[1] %></td>
-            <td><%= button_to 'Remove',
-            recipe_recipe_food_path(@recipe,food[3]), method: :delete, class:"remove" %>
-            <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe,food[3]), class:"modify" %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+
 
 
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
