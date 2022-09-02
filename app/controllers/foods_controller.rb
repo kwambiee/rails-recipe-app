@@ -21,7 +21,9 @@ class FoodsController < ApplicationController
 
   # POST /foods or /foods.json
   def create
+   
     @food = Food.new(food_params)
+    @food.user_id = current_user.id
 
     respond_to do |format|
       if @food.save
