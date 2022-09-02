@@ -15,7 +15,7 @@
           <th class="col">Name</th>
           <th class="col">Units</th>
           <th class="col">Price</th>
-          <th class="col">Details</th>
+          <th class="col">Delete</th>
         </tr>
       </thead>
       <% @foods.each do |food| %>
@@ -26,7 +26,9 @@
               <td><%= food.name %></td>
               <td><%= food.measurement_unit %></td>
               <td><%= food.price %></p></td>
+              <% if can? :destroy, food %>
               <td><%= button_to "Delete", food, method: :delete, class:"btn btn-danger btn-sm" %></td>
+                <% end %>
             </tr>
           </tbody>
       <% end %>
