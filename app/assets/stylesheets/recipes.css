@@ -47,3 +47,47 @@ body {
   height: 350px;
   margin-top: 100px;
 }
+
+.food-details {
+  margin-left: 4rem;
+}
+
+.shopping {
+  width: 700px;
+  padding-left: 10%;
+}
+
+.table-responsive {
+  width: 500px;
+  margin: 0 auto;
+}
+
+.inventory p:nth-child(2) {
+  display: none;
+}
+
+.inventory p:nth-child(1) {
+  font-weight: bold;
+  font-size: 2rem;
+}
+
+.link a {
+  font-size: 1rem;
+  text-decoration: none;
+  background-color: #eee;
+  color: #333;
+  border-top: 1px solid #ccc;
+  border-right: 1px solid #333;
+  border-bottom: 1px solid #333;
+  border-left: 1px solid #ccc;
+  padding: 0.5rem;
+}
+
+.link {
+  text-align: right;
+  margin-right: 2rem;
+}
+
+hr {
+  margin: 1rem 1rem;
+}

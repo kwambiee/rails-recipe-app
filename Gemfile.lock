@@ -108,7 +108,6 @@ GEM
     digest (3.1.0)
     erubi (1.11.0)
     ffi (1.15.5)
-    ffi (1.15.5-x64-mingw-ucrt)
     font-awesome-sass (6.1.2)
       sassc (~> 2.0)
     globalid (1.0.0)
@@ -151,6 +150,8 @@ GEM
       timeout
     nio4r (2.5.8)
     nokogiri (1.13.8-x86_64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.13.8-x86_64-linux)
       racc (~> 1.4)
     orm_adapter (0.5.0)
     pg (1.4.3)
@@ -270,6 +271,7 @@ GEM
 
 PLATFORMS
   x86_64-darwin-19
+  x86_64-linux
 
 DEPENDENCIES
   bootsnap

@@ -1,11 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
-#   Character.create(name: "Luke", movie: movies.first)
-require 'faker'
+# # This file should contain all the record creation needed to seed the database with its default values.
+# # The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
+# #
+# # Examples:
+# #
+# #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
+# #   Character.create(name: "Luke", movie: movies.first)
+# require 'faker'
 Recipe.create(name: "Parmesan Crusted Chicken", preparation_time: "00:30:00", cooking_time: "01:00:00", description: "Parmesan crusted chicken is a great dish to add to your repertoire. It's easy enough to make for a weeknight dinner but also elegant enough for company, and it appeals to the whole family.", public: true, user_id: 1)
 Recipe.create(name: "Creamy Baked Mac and Cheese", preparation_time: "00:10:00", cooking_time: "0:30:00", description: "This baked mac and cheese is a family favorite recipe, loved by both children and adults. It uses a combination of cheeses, layered in the dish as well as melted into a rich and creamy cheese sauce, for the ultimate in cheesy deliciousness!  Perfect for a comforting dinner or as a holiday side dish!", public: true, user_id: 1)
 Recipe.create(name: "Perfect Baked Potato", preparation_time: "01:00:00", cooking_time: "0:30:00", description: "A perfect baked potato is hard to beat. The outside is brown and crisp, coated in a crust of sea salt. Pierce the skin, and your fork gives way to a soft, fluffy interior.", public: false, user_id: 1)

@@ -5,8 +5,8 @@ class InventoriesController < ApplicationController
 
   def show
     @inventory = Inventory.find(params[:id])
-    @foods = InventoryFood.joins(:inventory, :food).where(inventory: @inventory).pluck('foods.name',
-                                                                                       'inventory_foods.quantity', 'inventory_foods.id')
+    @foods = InventoryFood.joins(:inventory, :food).where(inventory: @inventory).pluck('foods.id', 'foods.name', 'inventory_foods.quantity',
+                                                                                       'inventory_foods.id')
   end
 
   def create

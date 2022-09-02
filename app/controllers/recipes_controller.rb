@@ -5,9 +5,8 @@ class RecipesController < ApplicationController
 
   def show
     @recipe = Recipe.find(params[:id])
-    @foods = RecipeFood.joins(:recipe, :food).where(recipe: @recipe).pluck('foods.name', 'foods.price',
-                                                                           'recipe_foods.quantity', 'recipe_foods.id')
-
+    @foods = RecipeFood.joins(:recipe, :food).where(recipe: @recipe).pluck('foods.name', 'foods.price', 'recipe_foods.quantity',
+                                                                           'recipe_foods.id')
     @inventories = @recipe.user.inventories.pluck(:name, :id)
   end
 
@@ -29,7 +28,7 @@ class RecipesController < ApplicationController
           # error message
           flash.now[:error] = 'Error: recipe could not be saved'
           # render new
-          render :new, locals: { recipe: }
+          # render :new, locals: { recipe: }
         end
       end
     end

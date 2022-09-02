@@ -1,0 +1,17 @@
+<div class="table-responsive">
+<%= form_with url: "/inventories/#{@inventory.id}/inventory_foods" do |form| %>
+    <div class="my-5">
+        <%= form.label :quantity, class: "form-label fw-bold" %>
+        <%= form.number_field :quantity, autofocus: true, min: 0, class: "form-control" %>
+    </div>
+    <div class="my-4">
+        <%= form.label :food_id, class: "form-label me-3 fw-bold" %>
+        <%= form.select :food_id, @foods %>
+    </div>
+
+    <div>
+        <%= form.submit "Add Food", class: "line_btn" %>
+    </div>
+<% end %>
+</div>
+

@@ -65,7 +65,7 @@
         <p> Choose an inventory to use </p>
       <div class="d-flex justify-content-evenly">
 
-      <%= form_for ShoppingList.new  do |f| %>
+      <%= form_for ShoppingList.new do |f| %>
         <%= f.label 'select inventory' %>
         <%= f.select :inventory_id, @inventories %>
         <%= f.hidden_field :recipe_id, value: @recipe.id %>
