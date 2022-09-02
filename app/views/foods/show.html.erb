@@ -1,6 +1,14 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @food %>
+<%= render "food", food: @food %>
+
+
+<% @food.each do  |food| %>
+  <%= link_to food_path(food.id) do %>
+    <%= render partial: 'food', locals: {food:food} %>
+  <% end %>
+<% end %>
+</div>
 
 <div>
 

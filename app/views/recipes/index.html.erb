@@ -11,7 +11,9 @@
       <%= link_to recipe_path(recipe.id), class: 'btn btn-warning p-2 mt-1' do %>
       <h1><%= recipe.name %></h1>
       <% end %>
-      <%= button_to "REMOVE", recipe, method: :delete, class:"btn btn-sm" %>
+      <% if can? :destroy, recipe %>
+        <%= button_to "Delete", recipe, method: :delete, class:"btn btn-danger btn-sm" %>
+      <% end %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
