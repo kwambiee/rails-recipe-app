@@ -1,33 +1,29 @@
+
+
 <p style="color: green"><%= notice %></p>
-
-<div class="container">
-  <div class="text-center">
-    <h1>Inventories</h1>
-
-    <%= link_to "New inventory", new_inventory_path , class: 'btn btn-dark btn-sm mb-2'%>
-  </div>
-  <table class="table table-striped container m-3">
-
-    <thead>
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col">Food</th>
-      <th scope="col">Quantity</th>
-      <th scope="col">Action</th>
-
-    </tr>
-    </thead>
-    <% @inventories.each do |inventory| %>
-        <tbody>
-        <tr>
-          <th scope="row"><%= inventory.id %></th>
-          <td><%= inventory.name %></td>
-          <td><%= inventory.description %></td>
-          <td><%= inventory.description %></td>
-          <td><%= button_to "REMOVE", inventory, method: :delete, class:"remove", class: 'btn btn-light btn-sm mb-2' %></td>
-        </tr>
-
-        </tbody>
-    <% end %>
-  </table>
+<div class="card-header container text-center">
+  <h1>Inventories</h1>
+  <%= link_to "Add recipe", new_recipe_path, class: 'btn btn-dark btn-sm' %>
 </div>
+<% @inventories.each do |inventory| %>
+  <br>
+  <div class="container card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4 p-1">
+      <%= link_to "/inventories/#{inventory.id}", class: 'btn btn-warning p-2 mt-1' do %>
+      <h1><%= inventory.name %></h1>
+      <% end %>
+      <%= button_to "REMOVE", inventory, method: :delete, class:"btn btn-sm" %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= inventory.description.truncate(100) %></h5>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+
