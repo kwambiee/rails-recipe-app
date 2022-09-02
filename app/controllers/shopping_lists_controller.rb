@@ -6,7 +6,6 @@ class ShoppingListsController < ApplicationController
     total = 0
     @unlisted_foods.each { |food| total += food[2] }
     @total = total
-
   end
 
   def create
@@ -35,11 +34,10 @@ class ShoppingListsController < ApplicationController
   end
 
   def unlisted_foods(r_id, i_id)
-    inv_food =InventoryFood.joins(:inventory,:food).where(inventory_id: i_id).pluck('foods.id')
-    rec_food = RecipeFood.joins(:recipe,:food).where(recipe_id: r_id).pluck('foods.id')
+    inv_food = InventoryFood.joins(:inventory, :food).where(inventory_id: i_id).pluck('foods.id')
+    rec_food = RecipeFood.joins(:recipe, :food).where(recipe_id: r_id).pluck('foods.id')
     common_foods = inv_food.concat(rec_food)
     duplicates = common_foods.select { |e| common_foods.count(e) > 1 }.uniq
-    InventoryFood.joins(:food).where.not(food_id: duplicates).pluck('foods.name','inventory_foods.quantity','foods.price')
-
+    InventoryFood.joins(:food).where.not(food_id: duplicates).pluck('foods.name', 'inventory_foods.quantity', 'foods.price')
   end
 end
