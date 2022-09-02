@@ -5,7 +5,7 @@ class Ability
     cannot :read, :all
     return unless user.present?
 
-    can :read, [Food, Recipe]
+    can :read, [Food, Recipe, Inventory]
     can :create, :all, user_id: user.id
     can :destroy, :all, user_id: user.id
   end
