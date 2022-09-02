@@ -1,6 +1,6 @@
 
 ![](https://img.shields.io/badge/Microverse-blueviolet)
-# Recipe App
+# Rails recipe App
 
 >Rails recipe app is a Ruby on Rails application that keeps track of all your foods, recipes, ingredients, and inventories.
 
