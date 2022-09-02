@@ -59,3 +59,32 @@ body {
   width:500px;
   margin:0 auto;
 }
+
+.inventory p:nth-child(2) {
+  display:none;
+}
+
+.inventory p:nth-child(1) {
+  font-weight: bold;
+  font-size: 2rem;
+}
+.link a{
+  font: bold 1rem Arial;
+    text-decoration: none;
+    background-color: #EEEEEE;
+    color: #333333;
+    padding: 2px 6px 2px 6px;
+    border-top: 1px solid #CCCCCC;
+    border-right: 1px solid #333333;
+    border-bottom: 1px solid #333333;
+    border-left: 1px solid #CCCCCC;
+    padding: 0.5rem;
+}
+.link{
+  text-align: right;
+  margin-right: 2rem;
+}
+
+hr{
+  margin: 1rem 1rem;
+}

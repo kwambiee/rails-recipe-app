@@ -1,25 +1,28 @@
 <p style="color: green"><%= notice %></p>
 
-<%= render @inventory %>
+<h6 class="text-center inventory"><%= render @inventory %></h6>
+<div class="link ">
 <%= link_to 'Add Food', new_inventory_inventory_food_path(@inventory) %>
+</div>
+<hr>
 
 
-  <div>
-    <table>
+  <div class = "table-responsive">
+    <table class="table table-striped table-bordered">
       <thead>
         <tr>
-          <th>Food</th>
-          <th>Quantity</th>
-          <th>Actions</th>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Actions</th>
         </tr>
       </thead>
       <tbody>
         <% @foods.each do |food| %>
           <tr>
-            <td><%= food[0] %></td>
-            <td><%= food[1] %></td>
-            <td><%= button_to 'Remove',
-            inventory_inventory_food_path(@inventory,food[2]), method: :delete, class:"remove" %>
+            <td scope="row"><%= food[1] %></td>
+            <td scope="row"><%= food[2] %></td>
+            <td scope="row"><%= button_to 'Remove',
+            inventory_inventory_food_path(@inventory,food[3]), method: :delete, class:"remove" %>
             </td>
           </tr>
         <% end %>
