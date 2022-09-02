@@ -6,7 +6,7 @@
 
 
 ## ERD
-![image](https://raw.githubusercontent.com/microverseinc/curriculum-rails/main/recipe-app/images/recipe_erd_2_members.png?token=GHSAT0AAAAAABOWCPLA57LZBCWNNJLJ6BIEYXJSSPQ)
+![image](https://github.com/microverseinc/curriculum-rails/blob/main/recipe-app/images/recipe_erd.png)
 
 ### Cloning the project
 
@@ -36,13 +36,17 @@ Setup
 ```
 # Sign into posgresql
 su - postgres
+
 # Create user
 create user 'user_name' with encrypted password 'mypassword'
+
 # Load the schema
 rails db:schema:load
+
 #----- If you want prefer this approach
 # Create the database
 rake db:create
+
 # Create database Migration
 rails db:migrate
 ```
@@ -50,6 +54,8 @@ rails db:migrate
 ### Run
 
 ```
+bundle install
+
 rails s
 ```
 
@@ -67,7 +73,7 @@ rspec
 - Twitter: [@NwachanT](https://twitter.com/NwachanT) 
 - LinkedIn: [LinkedIn](https://linkedin.com/in/nwachan-theophile)
 
-## Joy Kwamboka
+👤 **Joy Kwamboka**
 
 - Github: [@kwambiee](https://github.com/kwambiee)
 - Twitter: [@kwambiee](https://twitter.com/kwambiee)
