@@ -8,8 +8,10 @@
   <div class="container card mb-3" style="max-width: 540px;">
   <div class="row g-0">
     <div class="col-md-4 p-1">
+      <%= link_to recipe_path(recipe.id), class: 'btn btn-warning p-2 mt-1' do %>
       <h1><%= recipe.name %></h1>
-      <%= link_to "REMOVE", recipe, method: :delete, class: 'btn btn-light btn-sm mb-2' %>
+      <% end %>
+      <%= button_to "REMOVE", recipe, method: :delete, class:"btn btn-sm" %>
     </div>
     <div class="col-md-8">
       <div class="card-body">
@@ -18,8 +20,8 @@
     </div>
   </div>
 </div>
-
 <% end %>
+
 
 
 
