@@ -1,0 +1,22 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render "food", food: @food %>
+
+
+<% @food.each do  |food| %>
+  <%= link_to food_path(food.id) do %>
+    <%= render partial: 'food', locals: {food:food} %>
+  <% end %>
+<% end %>
+</div>
+
+<div>
+
+    <p><b>Name </b><%= @food.name %></p>
+    <p><b>Measurement Unit: </b></b><%= @food.measurement_unit %></p>
+    <p><b>Price: </b><%= @food.price %></p>
+
+  <%= link_to "Back to foods", foods_path %>
+  <%= button_to "Destroy this food", @food, method: :delete %>
+
+</div>

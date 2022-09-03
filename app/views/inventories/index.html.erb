@@ -1,0 +1,31 @@
+
+
+<p style="color: green"><%= notice %></p>
+<div class="card-header container text-center">
+  <h1>Inventories</h1>
+  <%= link_to "New inventory", new_inventory_path, data: { turbo: false },class: 'btn btn-dark btn-sm' %>
+</div>
+<% @inventories.each do |inventory| %>
+  <br>
+  <div class="container card mb-3" style="max-width: 540px;">
+  <div class="row g-0">
+    <div class="col-md-4 p-1">
+      <%= link_to "/inventories/#{inventory.id}", class: 'btn btn-warning p-2 mt-1' do %>
+      <h1><%= inventory.name %></h1>
+      <% end %>
+      <% if can? :destroy, inventory %>
+      <%= button_to "REMOVE", inventory, method: :delete, class:"btn btn-sm" %>
+        <% end %>
+    </div>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title"><%= inventory.description.truncate(100) %></h5>
+      </div>
+    </div>
+  </div>
+</div>
+<% end %>
+
+
+
+

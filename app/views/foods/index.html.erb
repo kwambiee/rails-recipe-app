@@ -1,0 +1,39 @@
+<p style="color: green"><%= notice %></p>
+<div class="container text-center">
+  <h1>Foods</h1>
+  <br>
+  <%= link_to "New food", new_food_path, class: 'btn btn-outline-dark btn-sm' %>
+  <br>
+</div>
+
+<div id="foods">
+  <br>
+    <table class="table table-striped table-bordered container">
+      <thead>
+        <tr>
+          <th class="col">#</th>
+          <th class="col">Name</th>
+          <th class="col">Units</th>
+          <th class="col">Price</th>
+          <th class="col">Delete</th>
+        </tr>
+      </thead>
+      <% @foods.each do |food| %>
+        <%= render food %>
+          <tbody>
+            <tr>
+              <td><%= food.id %></td>
+              <td><%= food.name %></td>
+              <td><%= food.measurement_unit %></td>
+              <td><%= food.price %></p></td>
+              <% if can? :destroy, food %>
+              <td><%= button_to "Delete", food, method: :delete, class:"btn btn-danger btn-sm" %></td>
+                <% end %>
+            </tr>
+          </tbody>
+      <% end %>
+    </table>
+
+</div>
+
+

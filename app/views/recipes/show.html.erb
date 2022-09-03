@@ -1,0 +1,113 @@
+<p style="color: green"><%= notice %></p>
+
+
+<div class="container">
+  <%= link_to recipes_path do %>
+    <button class="btn btn-secondary">Back to recipes <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-return-left" viewBox="0 0 16 16">
+      <path fill-rule="evenodd" d="M14.5 1.5a.5.5 0 0 1 .5.5v4.8a2.5 2.5 0 0 1-2.5 2.5H2.707l3.347 3.346a.5.5 0 0 1-.708.708l-4.2-4.2a.5.5 0 0 1 0-.708l4-4a.5.5 0 1 1 .708.708L2.707 8.3H12.5A1.5 1.5 0 0 0 14 6.8V2a.5.5 0 0 1 .5-.5z"/>
+    </svg></button>
+  <% end %>
+
+
+  <div class="d-flex justify-content-between mx-4">
+      <h5 class="mt-4">Preparation_time: <%= @recipe.preparation_time.strftime("%k:%M") %>hr</h5>
+
+        </svg>
+      <% if @recipe.public %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="45" fill="currentColor" class="bi bi-toggle-on" viewBox="0 0 16 16">
+          <path d="M5 3a5 5 0 0 0 0 10h6a5 5 0 0 0 0-10H5zm6 9a4 4 0 1 1 0-8 4 4 0 0 1 0 8z"/>
+          </svg>
+      <% else %>
+        <svg xmlns="http://www.w3.org/2000/svg" width="50" height="45" fill="currentColor" class="bi bi-toggle-off" viewBox="0 0 16 16">
+          <path d="M11 4a4 4 0 0 1 0 8H8a4.992 4.992 0 0 0 2-4 4.992 4.992 0 0 0-2-4h3zm-6 8a4 4 0 1 1 0-8 4 4 0 0 1 0 8zM0 8a5 5 0 0 0 5 5h6a5 5 0 0 0 0-10H5a5 5 0 0 0-5 5z"/>
+        </svg>
+      <% end %>
+  </div>
+    <h5 class="mx-4" >Cooking_time: <%= @recipe.cooking_time.strftime("%k:%M")%>hr</h5>
+    <% "Steps go here.." %>
+  <div class="d-flex mx-4 justify-content-between">
+      <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Generate Shopping list </button>
+      <%= link_to "Add ingredients", new_food_path, class: 'btn btn-primary' %>
+  </div>
+  <hr>
+
+
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Generate shopping list</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p> Choose an inventory to use </p>
+      <div class="d-flex justify-content-evenly">
+
+      <%= form_for ShoppingList.new do |f| %>
+        <%= f.label 'select inventory' %>
+        <%= f.select :inventory_id, @inventories %>
+        <%= f.hidden_field :recipe_id, value: @recipe.id %>
+        <%= f.submit 'Generate' %>
+      <% end %>
+
+
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-header">
+          <h4 class="card-title text-center"> Recipe list </h4>
+        </div>
+        <div class="card-body">
+          <div class="table-responsive">
+            <table class="table">
+              <thead class=" text-primary">
+                <th>
+                  Name
+                </th>
+                <th>
+                  Quantity
+                </th>
+                <th>
+                  Value
+                </th>
+                <th>
+                  Actions
+                </th>
+              </thead>
+              <tbody>
+                <% @foods.each do |food| %>
+                  <tr>
+                    <td><%= food[0] %></td>
+                    <td><%= food[2] %></td>
+                    <td>$<%= food[1] %></td>
+                    <td><%= button_to 'Remove',
+                    recipe_recipe_food_path(@recipe,food[3]), method: :delete, class:"remove" %>
+                    <%= link_to 'Modify', edit_recipe_recipe_food_path(@recipe,food[3]), class:"modify" %>
+                    </td>
+                  </tr>
+                <% end %>
+              </tbody>
+
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>

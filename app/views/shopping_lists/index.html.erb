@@ -1,0 +1,36 @@
+<h3 class="text-center font-weight-bold"> General shopping list </h3>
+<div class= "d-flex mx-auto shopping mb-4 mt-4">
+    <div>
+        <p>Amount of food to buy: <b><%=@unlisted_foods.count %></b> </p>
+        <p>Total Value of food needed: $<b><%= @total %></b> </p>
+    </div>
+    <div class="ms-5">
+        <p>Recipe : <b><%= @recipe.name %></b> </p>
+        <p>Inventory: <b><%= @inventory.name %></b></p>
+    </div>
+</div>
+<div class = "table-responsive">
+<table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th scope="col">Food</th>
+          <th scope="col">Quantity</th>
+          <th scope="col">Value</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @unlisted_foods.each do |food| %>
+          <tr>
+            <td scope="row"><%= food[0] %></td>
+            <td scope="row"><%= food[1] %></td>
+            <td scope="row"><%= food[2] %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+</div>
+
+
+
+
+
