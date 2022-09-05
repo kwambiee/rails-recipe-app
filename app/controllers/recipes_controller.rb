@@ -28,7 +28,7 @@ class RecipesController < ApplicationController
           # error message
           flash.now[:error] = 'Error: recipe could not be saved'
           # render new
-          # render :new, locals: { recipe: }
+          render :new, locals: { recipe: @recipe }
         end
       end
     end
