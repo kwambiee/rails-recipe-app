@@ -18,7 +18,7 @@ RSpec.feature 'Recipe show page' do
     end
 
     scenario 'shows the recipe' do
-      expect(page).to have_content(Recipe.name)
+      expect(page).to have_content(@recipe.name)
     end
 
     scenario 'shows recipe cooking time' do

@@ -21,11 +21,9 @@
           <tr>
             <td scope="row"><%= food[1] %></td>
             <td scope="row"><%= food[2] %></td>
-            <% if can? :delete, @inventory %>
             <td scope="row"><%= button_to 'Remove',
             inventory_inventory_food_path(@inventory,food[3]), method: :delete, class:"remove" %>
             </td>
-            <% end %>
           </tr>
         <% end %>
       </tbody>
